@@ -4,7 +4,7 @@
         <description>
             As good looking as ever.
         </description>
-    </item>       
+    </item>    
     <item id="1" name="HOOK" fixed="true">
         <description>It's just a small brass hook, screwed to the wall.</description>
     </item>
@@ -29,14 +29,14 @@
             room.
             You are wearing it.
         </description>       
-		<actionListeners>
+        <actionListeners>
             <actionListener verb="TAKE" onAction="200"/>
             <actionListener verb="PUT" onAction="201"/>
             <actionListener verb="WEAR" onAction="201"/>
         </actionListeners>
     </item>
     
-    <item id="4" name="MESSAGE" fixed="true" onExamined="203">
+    <item id="4" name="MESSAGE" fixed="true" onExamined="204">
         <description>
             The message, neatly marked in the sawdust, reads...
 

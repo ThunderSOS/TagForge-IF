@@ -36,17 +36,32 @@
                 It's just a small brass hook, screwed to the wall.
             </consequence>
             <consequence type="addRoomTags" roomId="4" tags="dark"/>
-            <consequence type="removeItemsFromRoom" itemId="4" roomId="4"/>
         </onSuccess>
     </event>
 	
-    <event id="203" name="Won" type="EVENT_TRIGGERED">
+    <event id="203" name="Read message" type="EVENT_TRIGGERED">
         <conditions/>
-        <onSuccess>
+        <onSuccess>            
             <consequence type="showScore"/>
             <consequence type="waitForKey">...Press [Enter] to conrinue...</consequence>
             <consequence type="newGame"/>
         </onSuccess>
+    </event>    
+     
+    <event id="204" name="Examine message" type="EVENT_TRIGGERED">
+        <conditions>
+            <condition type="checkRoomHasTag" tags="dark"/>
+        </conditions>
+        <onSuccess>            
+            <consequence type="updateItemDescription" itemId="4">
+                The message has mostly been trodden out but you can still see it reads...
+
+                *** You have lost ***
+            </consequence>
+        </onSuccess>
+        <onFailed>
+            <consequence type="fireEvent" eventId="203"/>
+        </onFailed>
     </event>
     
     <event id="500000" name="Death" type="EVENT_TRIGGERED">
@@ -61,15 +76,39 @@
     </event>
     
     <event id="20000" type="EVENT_TRIGGERED">
-        <conditions/>
-        <onSuccess>
-            <consequence type="message">
-                ***
-                The dark room interceptor ran but it deliberately didn't do anything. 
-                This could be used to hinder your movement back out of the unlit bar area.
-                *** 
-            </consequence>
+        <conditions>
+            <condition type="checkCount" key="barBumps" amount="2" invert="true"/>
+        </conditions>
+        <onSuccess>            
+            <consequence type="points" key="barBumps" amount="1"/>      
         </onSuccess>
+        <onFailed>
+            <consequence type="updateItemDescription" itemId="4">
+                The message has mostly been trodden out but you can still see it reads...
+
+                *** You have lost ***
+            </consequence>
+        </onFailed>
+    </event>
+    
+    <event id="20001" type="EVENT_TRIGGERED">
+        <conditions>
+            <condition type="checkCount" key="barBumps" amount="2" invert="true"/>
+        </conditions>
+        <onSuccess>
+            <consequence type="points" key="barBumps" amount="1"/>
+            <consequence type="message">You fumble around in the dark.</consequence>
+            <consequence type="blockAction"/>         
+        </onSuccess>
+        <onFailed>
+            <consequence type="updateItemDescription" itemId="4">
+                The message has mostly been trodden out but you can still see it reads...
+
+                *** You have lost ***
+            </consequence>
+            <consequence type="message">You fumble in the dark.</consequence>
+            <consequence type="blockAction"/> 
+        </onFailed>
     </event>
 </events>
 
