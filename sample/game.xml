@@ -24,7 +24,7 @@
         <itemSet roomTag="river" itemIds="-12"/>
     </defaultItems>
     
-    <!--
+    
     <player inventory="1|-9|-101" 
             startRoom="1" 
             timeout="5" 
@@ -32,8 +32,12 @@
             hp="100"
             defaultCombatItem="-9"
             onDeathEvent="99999" 
-            quitGameNpc="99999"/>   
-    -->
+            quitGameNpc="99999"
+            itemTags="male">
+        A slouched, greying middle aged man. Your face is wrinkled, skin rough and badly shaven. 
+        You are old well before your time.
+    </player>  
+    <!--
     <player inventory="-9|1|23|24|101|400|412|403|404|405|409|432|511|517|23|24|25|432|410|414" 
             startRoom="1"
             timeout="5"
@@ -131,6 +135,7 @@
     <ignoredWords>GO|THE|A|AN|SOME|OF|YOUR|ONE|TWO|FEW| | </ignoredWords>
     <pronouns>IT</pronouns>
     <again>A|AGAIN|REDO</again>
+    <me>ME|MYSELF|SELF</me>
     
     <verbs defaultPackage="org.happysoft.games.action.handler">
         <verb synonyms="LOOK|L" handler="AdverbHandler" acceptedPrepositions="AT|IN|WITH|USING|THROUGH">
