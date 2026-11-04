@@ -18,7 +18,14 @@
                  match="They're worth :1."/>
     </auxiliaryMessages>
     
-    <player inventory="1|-101" 
+    <defaultItems>
+        <itemSet roomTag="inside" itemIds="-10"/>
+        <itemSet roomTag="outside" itemIds="-11"/>
+        <itemSet roomTag="river" itemIds="-12"/>
+    </defaultItems>
+    
+    <!--
+    <player inventory="1|-9|-101" 
             startRoom="1" 
             timeout="5" 
             skiptime="10" 
@@ -26,16 +33,34 @@
             defaultCombatItem="-9"
             onDeathEvent="99999" 
             quitGameNpc="99999"/>   
-    <!--
-    <player inventory="-101|1|23|24|101|400|412|403|404|405|409|432|511|517|23|24|25|432|410|414" 
+    -->
+    <player inventory="-9|1|23|24|101|400|412|403|404|405|409|432|511|517|23|24|25|432|410|414" 
             startRoom="1"
             timeout="5"
             skiptime="10"
             hp="100"
             defaultCombatItem="-9"
             onDeathEvent="99999"
-            quitGameNpc="99999"/>
-    ==>
+            quitGameNpc="99999"
+            itemName="ME" 
+            itemTags="male">
+        A slouched, greying middle aged man. Your face is wrinkled, skin rough and badly shaven. 
+        You are old well before your time.         
+    </player>
+    -->
+            
+    <genders default="male">
+        <gender tag="male" pronoun="he" object="him"
+                possessive="his" possessivePronoun="his"
+                pluralise="single"/>
+        <gender tag="female" pronoun="she" object="her"
+                possessive="her" possessivePronoun="hers"
+                pluralise="single"/>
+        <gender tag="they" pronoun="they" object="them"
+                possessive="their" possessivePronoun="theirs"
+                pluralise="plural"/>
+    </genders>
+    
     <currency major="Dollars" minor="Cents" symbol="$" initialBalance="0"/>
     <gameClock type="24" startTime="13:00"/>
     
@@ -148,7 +173,7 @@
                 Use EXAM ALL to examine everything in the current location
             </help>
         </verb>
-        <verb synonyms="INVENTORY|INV" handler="InventoryHandler">
+        <verb synonyms="INVENTORY|INV|I" handler="InventoryHandler">
             <help>
                 INV; Lists items you are carrying
             </help>
@@ -167,12 +192,12 @@
             </help>
             <adverbs defaultHandler="TakeHandler">
                 <!-- PUT ON x (like WEAR) --> 
-                <adverb adverbs="OFF" handler="ItemActionListener" itemTag="wearable"/>
+                <adverb adverbs="OFF" handler="ItemActionListener"/>
                 <!--
-                    <rules>
-                        Take x OFF y, maybe like HANG x ON y
-                        <rule name="CheckTargetObjectIsNotNull" override="DoTaskHandler"/>	
-                    </rules>
+                <rules>
+                  Take x OFF y, maybe like HANG x ON y
+                  <rule name="CheckTargetObjectIsNotNull" override="DoTaskHandler"/>	
+                </rules>
                 </adverb>   
                 -->
             </adverbs>
@@ -294,7 +319,7 @@
                 COMPARE [adjective] &lt;noun&gt;; WITH|AGAINST [adjective] &lt;noun&gt;; compare one thing against another
             </help>
         </verb>        
-        <verb synonyms="CRAWL" handler="DirectionHandler">
+        <verb synonyms="CRAWL" handler="DefaultHandler">
             <help>
                 CRAWL &lt;direction&gt;; Sometimes you may have to crawl through a low opening, use CRAWL &lt;direction&gt;
             </help>
@@ -364,14 +389,15 @@
                 REMOVE [adjective] &lt;noun&gt;; REMOVE one object FROM another
             </help>
         </verb>
-        <verb synonyms="RUN" handler="DoTaskHandler">
+        <verb synonyms="RUN" handler="DefaultHandler">
             <help>
                 RUN somewhere instead of walking, this reduces the time taken to get to a destination. Use RUN &lt;direction&gt;
             </help>            
         </verb>
-        <verb synonyms="SAY" handler="DoTaskHandler" hint="You only need to SAY something in certain locations.">
+        <verb synonyms="SAY" handler="SayHandler" hint="You only need to SAY something in certain locations." acceptedPrepositions="TO">
             <help>
-                SAY &quot;&lt;quoted text&gt;&quot;; Say something, e.g. a password (SAY TO is not supported yet).
+                SAY &quot;&lt;quoted text&gt;&quot;; Say something, e.g. a password.
+                SAY TO &lt;npc&gt; &quot;"command&quot;
             </help>
         </verb>
         <verb synonyms="SHOW" handler="ShowHandler" acceptedPrepositions="TO">
