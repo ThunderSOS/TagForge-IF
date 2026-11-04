@@ -10,7 +10,9 @@
         <auxiliaryMessage type="BELONGS" tag="plural" single=":1 doesn't belong in :2." plural=":1 don't belong n :2."/>            
     </auxiliaryMessages>
 	
-    <player inventory="-101|3" startRoom="1" timeout="5" skiptime="10" hp="100" onDeathEvent="500000" quitGameNpc="99999"/>    
+    <player inventory="3" startRoom="1" timeout="5" skiptime="10" hp="100" onDeathEvent="500000" quitGameNpc="99999">
+        As good looking as ever.
+    </player>
     
     <currency major="Dollars" minor="Cents" symbol="$" initialBalance="0"/>
     <gameClock type="12" startTime="1:00pm"/>
@@ -80,6 +82,8 @@
     
     <ignoredWords>GO|THE|A|AN|SOME|OF|YOUR|ONE|TWO|FEW| | </ignoredWords>
     <pronouns>IT</pronouns>
+    <again>AGAIN|A</again>
+    <me>ME|MYSELF|SELF</me>
     
     <verbs defaultPackage="org.happysoft.games.action.handler">
         <verb synonyms="LOOK" handler="AdverbHandler" acceptedPrepositions="IN|AT">

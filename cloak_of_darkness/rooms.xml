@@ -2,8 +2,7 @@
 <rooms>
     <room id="1" name="the Foyer of the Opera House." youPrefix="in"> 
         <description>
-            Foyer of the Opera House
-            You are standing in a spacious hall, splendidly decorated in red and gold, with glittering chandeliers overhead. 
+            The foyer is a spacious hall, splendidly decorated in red and gold, with glittering chandeliers overhead. 
             The entrance from the street is to the north, and there are doorways south and west.
         </description>
         <exits>
